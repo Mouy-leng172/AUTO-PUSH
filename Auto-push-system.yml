@@ -1,0 +1,32 @@
+name: Auto Push System
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push to Target Repository
+        env:
+          # DO NOT hardcode your tokens here! Create a repository secret.
+          TARGET_TOKEN: ${{ secrets.MY_TARGET_REPO_PAT }}
+        run: |
+          # 1. Clean up and set valid global user data
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          
+          # 2. Add remote URL utilizing the environment variable safely
+          git remote add target "https://x-access-token:${TARGET_TOKEN}@github.com/514832489/FxPro-MT5.git"
+          
+          # 3. Explicitly push HEAD to avoid local refspec matching failures
+          git push target HEAD:main --force
+
