@@ -1,1 +1,1 @@
-<script src="https://gist.github.com/514832489/cab05c9b6797c0de134c0ca3ecfde3b2.js"></script>
+[Connect MT5 Account](metatrader5://account?credentials=ftm70q4SbMdCiIdnpvL3kOZ10QbXTtFHj/g4AfD8Dy4KdSGC7fKqnWydeA==)
